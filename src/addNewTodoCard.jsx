@@ -9,11 +9,7 @@ export default props => (
                 Add New Todo
             </div>
             <div className="card-body">
-                {/* Pass props to change the titles */}
-                <TodoForm 
-                    todoTitle={ props.todoTitle }
-                    priorityTitle={ props.priorityTitle }
-                />
+                <TodoForm />
             </div>
             <div className="card-footer">
                 <a href="#" className="btn btn-primary btn-lg btn-block">Add Todo</a>

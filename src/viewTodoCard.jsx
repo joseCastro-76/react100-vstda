@@ -1,5 +1,6 @@
 import React from 'react';
-import TodoItem from './todoItem'
+import Todo from './todo'
+import Welcome from './welcome';
 
 export default props => (
     <div className="col-8">
@@ -7,19 +8,9 @@ export default props => (
             <div className="card-header">
                 View Todo
             </div>
-            <TodoItem
-                todoTitle={ props.todoTitle }
-                priorityTitle={ props.priorityTitle }
-            />
-            <TodoItem
-                todoTitle={ props.todoTitle }
-                priorityTitle={ props.priorityTitle }
-            />
-            <TodoItem
-                todoTitle={ props.todoTitle }
-                priorityTitle={ props.priorityTitle }
-            />
-            
+            { props.hasTodos 
+                ? <Todo /> 
+                : <Welcome /> }
         </div>
     </div>
 );

@@ -3,16 +3,16 @@ import React from 'react';
 export default props => (
     <form>
         <div className="form-group">
-            <label htmlFor="todo">{ props.todoTitle }</label>
-            <textarea className="form-control" id="todo" rows="5"></textarea>
+            <label htmlFor="todo">I want to...</label>
+            <textarea className="form-control create-todo-text" id="todo" rows="5"></textarea>
         </div>
         <div className="form-group">
-            <label htmlFor="priority">{ props.priorityTitle }</label>
+            <label htmlFor="priority">How much of a priotity is this?</label>
             <select className="form-control" id="priority">
-                <option selected disabled value="">Select a Priority</option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option selected disabled>Select a Priority</option>
+                <option value="1">High</option>
+                <option value="2">Medium</option>
+                <option value="3">Low</option>
             </select>
         </div>
     </form>

@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import Header from './header';
+import Jumbotron from './jumbotron';
 import AddNewTodoCard from './addNewTodoCard';
 import ViewTodoCard from './viewTodoCard';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hasTodos: true,
+      todos: [],
+    }
+  }
 
   render() {
     return (
       <div className="container">
-        <Header />
+        <Jumbotron />
         <div className="row">
-          <AddNewTodoCard
-            todoTitle="I want to..."
-            priorityTitle="How much of a priority is this?"
-          />
-          <ViewTodoCard
-            todoTitle="Description"
-            priorityTitle="Priority"
+          <AddNewTodoCard />
+          <ViewTodoCard 
+            hasTodos={ this.state.hasTodos }
           />
         </div>
-
       </div>
     );
   }
