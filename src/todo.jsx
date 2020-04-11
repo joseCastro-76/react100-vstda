@@ -5,8 +5,12 @@ import UpdateTodo from './updateTodo';
 export default props => (
     <div className="accordion" id="accordionExample">
         <div className="card">
-            <TodoItem />
-            <UpdateTodo />
+            <TodoItem
+                todo={ props.todo }
+            />
+            <UpdateTodo
+                todo={ props.todo }
+            />
         </div>
     </div>
 )

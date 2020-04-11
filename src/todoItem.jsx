@@ -6,7 +6,7 @@ export default props => (
             <div className="form-check mb-2 mr-sm-2">
                 <input className="form-check-input" type="checkbox" id="inlineFormCheck" />
                 <label className="form-check-label" htmlFor="inlineFormCheck">
-                Todo item will go here
+                { props.todo.todo }
                 </label>
             </div>
             <div className="ml-auto">

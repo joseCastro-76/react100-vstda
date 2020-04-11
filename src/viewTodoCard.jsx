@@ -9,7 +9,7 @@ export default props => (
                 View Todo
             </div>
             { props.hasTodos 
-                ? <Todo /> 
+                ? props.todoList.map(todo => <Todo todo={ todo } />)
                 : <Welcome /> }
         </div>
     </div>
