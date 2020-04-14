@@ -9,12 +9,18 @@ class App extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
     
     this.state = {
         id: 0,
         todo: '',
         priority: 0,
-        todoList: [],
+        completed: false,
+        editEnabled: false,
+        todoList: [], 
       }
 
   }
@@ -31,12 +37,13 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Button fired!!!!!')
 
     const formData = {
       id: this.state.id ++,
       todo: this.state.todo,
       priority: this.state.priority,
+      completed: this.state.completed,
+      editEnabled: this.state.editEnabled,
     }
 
     this.setState(prevState => ({
@@ -47,9 +54,36 @@ class App extends Component {
 
   }
 
-  
+  handleEdit(id) {
+    const todos = [...this.state.todoList];
+    const objIndex = todos.findIndex((obj => obj.id == id));
+    todos[objIndex].editEnabled = true;
+    this.setState({ todolist: todos });
+  }
+
+  handleUpdateSubmit(updatedState){
+    const todos = [...this.state.todoList];
+    const objIndex = todos.findIndex((obj => obj.id == updatedState.id));
+    todos[objIndex] = updatedState;
+    this.setState({ todoList: todos });
+  }
+
+  handleDelete(id) {
+    const todos = [...this.state.todoList];
+    const objIndex = todos.findIndex((obj => obj.id == id));
+    todos.splice(objIndex, 1);
+    this.setState({ todoList: todos });
+  }
+
+  handleCheckbox(id) {
+    console.log('checkbox firing');
+    const todos = [...this.state.todoList];
+    const objIndex = todos.findIndex((obj => obj.id == id));
+    todos[objIndex].done = !todos[objIndex].done;
+    this.setState({ todoList: todos });
+  }
+
   render() {
-    let renderWelcome = !this.state.todoList.length == 0;
     return (
       <div className="container">
         <Jumbotron />
@@ -61,8 +95,12 @@ class App extends Component {
             priority={ this.state.priority }
           />
           <ViewTodoCard 
-            hasTodos={ renderWelcome }
             todoList={ this.state.todoList }
+            handleInputChange={ this.handleInputChange }
+            handleEdit={ this.handleEdit }
+            handleUpdateSubmit={ this.handleUpdateSubmit }
+            handleDelete={ this.handleDelete }
+            handleCheckbox={ this.handleCheckbox }
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default props => (
-    <div className="card-body">
+    <div className="card-body mt-2">
         <h5 className="card-title">
             Welcome to Very Simple Todo App!
         </h5>

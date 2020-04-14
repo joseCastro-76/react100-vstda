@@ -1,5 +1,4 @@
 import React from 'react';
-import TodoForm from './todoForm'
 
 export default props => (
     <div className="col-4">
@@ -8,18 +7,40 @@ export default props => (
                 Add New Todo
             </div>
             <div className="card-body">
-                <TodoForm
-                    handleInputChange={ props.handleInputChange }
-                    todo={ props.todo }
-                    priority={ props.priority }
-                />
+            <form>
+                <div className="form-group">
+                    <label htmlFor="todo">I want to...</label>
+                    <textarea
+                        className="create-todo-text form-control"
+                        id="todo"
+                        name="todo"
+                        rows="5"
+                        value={ props.todo }
+                        onChange={ props.handleInputChange }>
+                    </textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="formPriority">How much of a priotity is this?</label>
+                    <select
+                        className="create-todo-priority form-control"
+                        id="priority"
+                        name="priority"
+                        value={ props.priority }
+                        onChange={ props.handleInputChange }>
+                            <option value="0" disabled>Select a Priority</option>
+                            <option value="1">High</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Low</option>
+                    </select>
+                </div>
+            </form>
             </div>
             <div className="card-footer">
-                <a href="#" 
-                    className="btn btn-primary btn-lg btn-block"
+                <button
+                    className="create-todo btn btn-primary btn-lg btn-block"
                     onClick={ props.handleSubmit }>
                     Add Todo
-                </a>
+                </button>
             </div>
         </div>
     </div>

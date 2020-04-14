@@ -3,14 +3,18 @@ import TodoItem from './todoItem';
 import UpdateTodo from './updateTodo';
 
 export default props => (
-    <div className="accordion" id="accordionExample">
-        <div className="card">
-            <TodoItem
+    <li className="list-group-item success">
+        { !props.todo.editEnabled
+            ? <TodoItem
                 todo={ props.todo }
+                handleEdit={ props.handleEdit }
+                handleDelete={ props.handleDelete }
+                handleCheckbox={ props.handleCheckbox }
             />
-            <UpdateTodo
+            : <UpdateTodo
                 todo={ props.todo }
+                handleUpdateSubmit={ props.handleUpdateSubmit }
             />
-        </div>
-    </div>
+        } 
+    </li>
 )
